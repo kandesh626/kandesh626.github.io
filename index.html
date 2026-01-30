@@ -10,46 +10,42 @@
         :root { --primary: #00f2fe; --tiktok: #ff0050; --insta: #e1306c; --snap: #fffc00; --fb: #1877f2; }
         html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #020617; font-family: 'Segoe UI', sans-serif; overflow: hidden; color: white; display: flex; justify-content: center; align-items: center; }
 
-        /* Sidebar Styles */
-        .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border-right: 1px solid var(--primary); overflow-y: auto; scrollbar-width: none; }
+        /* Sidebar Styles - Removed Border Right Line */
+        .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border: none; overflow-y: auto; scrollbar-width: none; }
         .sidebar.active { left: 0; }
-        .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--primary); padding: 8px 12px; border-radius: 12px; }
+        .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); padding: 8px 12px; border-radius: 12px; }
 
-        .list-title { color: var(--primary); font-size: 15px; font-weight: 800; margin: 25px 0 12px; opacity: 0.8; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; letter-spacing: 1px; }
-        .list-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border-radius: 15px; margin-bottom: 10px; font-size: 13px; cursor: pointer; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); }
-        .list-item:hover { background: rgba(0, 242, 254, 0.15); transform: translateX(-5px); border-color: var(--primary); }
+        .list-title { color: var(--primary); font-size: 15px; font-weight: 800; margin: 25px 0 12px; opacity: 0.8; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+        .list-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border-radius: 15px; margin-bottom: 10px; font-size: 13px; cursor: pointer; transition: 0.3s; }
+        .list-item:hover { background: rgba(0, 242, 254, 0.15); transform: translateX(-5px); }
         .list-item i { width: 20px; text-align: center; color: var(--primary); }
 
         .status-dot { width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: pulse-green 1.5s infinite; }
         @keyframes pulse-green { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* Main Glass Box */
-        .glass-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; }
+        /* Main Glass Box - Clean Look */
+        .glass-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; }
         .tiktok-logo { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--tiktok)); }
         
         .title-group h2 { margin: 0; font-size: 22px; font-weight: 900; color: white; letter-spacing: 1px; }
         .title-group .sub-kurdish { color: var(--primary); font-size: 22px; font-weight: 900; display: block; margin-bottom: 25px; }
 
         .input-wrapper { position: relative; width: 100%; }
-        input { width: 100%; background: #0a0f1a; border: 1px solid rgba(255,255,255,0.1); padding: 18px; border-radius: 22px; color: white; text-align: center; outline: none; margin-bottom: 15px; box-sizing: border-box; font-size: 14px; }
-        .paste-btn { position: absolute; left: 15px; top: 18px; color: var(--primary); cursor: pointer; font-size: 18px; transition: 0.3s; }
-        .paste-btn:active { transform: scale(0.8); }
+        input { width: 100%; background: #0a0f1a; border: 1px solid rgba(255,255,255,0.05); padding: 18px; border-radius: 22px; color: white; text-align: center; outline: none; margin-bottom: 15px; box-sizing: border-box; font-size: 14px; }
+        .paste-btn { position: absolute; left: 15px; top: 18px; color: var(--primary); cursor: pointer; font-size: 18px; }
 
-        .main-btn { width: 100%; padding: 18px; border-radius: 22px; border: none; background: linear-gradient(45deg, #ff0050, #7000ff); color: white; font-weight: 900; font-size: 16px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .main-btn:active { transform: scale(0.97); }
-
+        .main-btn { width: 100%; padding: 18px; border-radius: 22px; border: none; background: linear-gradient(45deg, #ff0050, #7000ff); color: white; font-weight: 900; font-size: 16px; cursor: pointer; transition: 0.3s; }
         .meter-container { display: none; margin: 15px auto; width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
         #result { width: 100%; margin-top: 20px; }
-        .video-container { position: relative; width: 100%; border-radius: 25px; overflow: hidden; border: 2px solid var(--primary); box-shadow: 0 0 20px rgba(0, 242, 254, 0.2); }
+        .video-container { position: relative; width: 100%; border-radius: 25px; overflow: hidden; border: 1.5px solid rgba(0, 242, 254, 0.3); }
         video { width: 100%; display: block; max-height: 300px; }
-        .dl-icon { position: absolute; top: 15px; right: 15px; background: var(--primary); color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 20px; box-shadow: 0 0 15px var(--primary); }
+        .dl-icon { position: absolute; top: 15px; right: 15px; background: var(--primary); color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 20px; }
 
-        .ads-msg { font-size: 12px; color: var(--primary); margin: 30px 0 15px; font-weight: bold; text-shadow: 0 0 5px rgba(0,242,254,0.3); }
+        .ads-msg { font-size: 12px; color: var(--primary); margin: 30px 0 15px; font-weight: bold; }
         .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .acc-card { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 18px; color: white; text-decoration: none; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .acc-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+        .acc-card { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 18px; color: white; text-decoration: none; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
@@ -58,20 +54,17 @@
 
     <div class="sidebar" id="sidebar">
         <div class="list-title">سیستەمی ناوەندی</div>
-        <div class="list-item" onclick="alert('سێرڤەر ئێستا چالاکە و پەیوەندی جێگیرە.')"><div class="status-dot"></div> باری سێرڤەر: <span style="margin-right:5px; color:#00ff00">Online</span></div>
-        <div class="list-item" onclick="alert('خێرایی داگرتن پشت بە خێرایی ئینتەرنێتەکەت دەبەستێت، بەڵام سێرڤەری ئێمە بێ سنوورە.')"><i class="fas fa-bolt"></i> خێرایی سێرڤەر: ⚡ 1.2 GB/s</div>
-        <div class="list-item" onclick="alert('پڕۆسەی پاراستنی داتا و کوالێتی ڤیدیۆ 100% چالاکە.')"><i class="fas fa-shield-check"></i> پاراستنی SSL: <span style="color:var(--primary)">Active</span></div>
+        <div class="list-item" onclick="alert('سێرڤەر ئێستا چالاکە.')"><div class="status-dot"></div> باری سێرڤەر: Online</div>
+        <div class="list-item"><i class="fas fa-bolt"></i> خێرایی سێرڤەر: ⚡ 1.2 GB/s</div>
+        <div class="list-item"><i class="fas fa-shield-check"></i> پاراستنی SSL: چالاکە</div>
         
-        <div class="list-title">خزمەتگوزاری و پشتگیری</div>
+        <div class="list-title">خزمەتگوزاری</div>
         <div class="list-item" onclick="location.reload()"><i class="fas fa-house-chimney"></i> لاپەڕەی سەرەکی</div>
-        <div class="list-item" onclick="alert('نوێکاری وەشانی v3.8:\n- سیستەمی نوێی API\n- چاککردنی کێشەی ئەندرۆید 14\n- دیزاینی Sidebar نوێ')"><i class="fas fa-code-merge"></i> دواین نوێکارییەکان</div>
+        <div class="list-item" onclick="alert('نوێکاری v3.8 تەواو بووە.')"><i class="fas fa-code-merge"></i> دواین نوێکارییەکان</div>
         <div class="list-item" onclick="window.open('https://t.me/kandesh_gardi', '_blank')"><i class="fas fa-comment-dots"></i> پشتگیری تەکنیکی</div>
-        <div class="list-item" onclick="alert('سپاس بۆ نرخاندنەکەت! ⭐⭐⭐⭐⭐')"><i class="fas fa-star-half-stroke"></i> نرخاندنی سایت</div>
+        <div class="list-item" onclick="alert('سپاس بۆ نرخاندنەکەت! ⭐')"><i class="fas fa-star-half-stroke"></i> نرخاندنی سایت</div>
         
-        <div class="list-title">بارودۆخی گشتی</div>
-        <div class="list-item"><i class="fas fa-cloud-sun"></i> کەشناسی سایت: <span style="color:#00f2fe; margin-right:5px;">Stable</span></div>
-        
-        <div style="margin-top:40px; font-size:10px; opacity:0.3; text-align:center; direction: ltr;">© 2026 KANDESH - ENGINEER</div>
+        <div style="margin-top:40px; font-size:10px; opacity:0.3; text-align:center;">© 2026 KANDESH - ENGINEER</div>
     </div>
 
     <div class="glass-box">
@@ -106,7 +99,7 @@
             try {
                 const text = await navigator.clipboard.readText(); 
                 document.getElementById('linkInput').value = text; 
-            } catch(e) { alert("تکایە دەستووری پەیستکردن بدە بە وێبگەڕەکەت."); }
+            } catch(e) { alert("تکایە دەستووری پەیست بدە."); }
         }
 
         async function processVideo() {
@@ -132,14 +125,14 @@
             } catch (e) {
                 document.getElementById('loader').style.display = "none";
                 document.getElementById('execBtn').style.display = "block";
-                alert("لینکی تیکتۆکەکە کار ناکات یان ڤیدیۆکە سڕاوەتەوە!");
+                alert("لینکی هەڵە!");
             }
         }
 
         async function saveVid(url) {
             const response = await fetch(url);
             const blob = await response.blob();
-            const file = new File([blob], "kandesh_tiktok.mp4", { type: "video/mp4" });
+            const file = new File([blob], "kandesh_video.mp4", { type: "video/mp4" });
             if (navigator.share) await navigator.share({ files: [file] }); else window.open(url, '_blank');
         }
     </script>
