@@ -9,12 +9,13 @@
     <style>
         :root { --primary: #00f2fe; --tiktok: #ff0050; --insta: #e1306c; --snap: #fffc00; --fb: #1877f2; }
         
-        html { background-color: #000; }
-        body { 
-            margin: 0; padding: 0; width: 100%; height: 100vh; 
-            font-family: 'Segoe UI', sans-serif; overflow: hidden; color: white; 
+        /* لابردنی کێشەی لای چەپ و گەڕانەوەی باکگراوندە ڕەنگاوڕەنگەکە */
+        html, body { 
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            font-family: 'Segoe UI', sans-serif; 
+            overflow-x: hidden; /* ئەمە کێشەی لای چەپ ناهێڵێت */
+            color: white; 
             display: flex; justify-content: center; align-items: center; 
-            /* تەنها ڕەنگە پڕۆفیشناڵەکان: شین، مۆر، سوور، نیلی */
             background: linear-gradient(-45deg, #020617, #1e1b4b, #4c0519, #0ea5e9, #2e1065);
             background-size: 400% 400%;
             animation: gradientContinuous 15s ease infinite;
@@ -26,48 +27,35 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Sidebar - بێ دەستکاری لای چەپ */
+        /* Sidebar - وەک کۆدی ئەسڵییەکەت */
         .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border: none; overflow-y: auto; scrollbar-width: none; }
         .sidebar.active { left: 0; }
         .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); padding: 8px 12px; border-radius: 12px; }
 
         .list-title { color: var(--primary); font-size: 15px; font-weight: 800; margin: 25px 0 12px; opacity: 0.8; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; text-align: right; }
         .list-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border-radius: 15px; margin-bottom: 10px; font-size: 13px; cursor: pointer; transition: 0.3s; justify-content: flex-start; }
-        .list-item:hover { background: rgba(0, 242, 254, 0.15); transform: translateX(-5px); }
         .list-item i { width: 20px; text-align: center; color: var(--primary); }
 
         .status-dot { width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: pulse-green 1.5s infinite; }
         @keyframes pulse-green { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* پەرەپێدانی بۆکسەکە بۆ ئەوەی ڕێک بێت لەسەر ئایفۆن */
-        .glass-box { 
-            background: rgba(15, 23, 42, 0.5); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 35px; 
-            width: 92%; /* پڕتر بە شاشە */
-            max-width: 450px; 
-            padding: 35px 20px; 
-            text-align: center; 
-            position: relative; 
-            backdrop-filter: blur(20px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
+        /* Glass Box Professional Size */
+        .glass-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 92%; max-width: 430px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; backdrop-filter: blur(15px); }
+        .tiktok-logo { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--tiktok)); }
         
-        .tiktok-logo { font-size: 65px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--tiktok)); }
-        .title-group h2 { margin: 0; font-size: 24px; font-weight: 900; color: white; letter-spacing: 1px; }
-        .title-group .sub-kurdish { color: var(--primary); font-size: 24px; font-weight: 900; display: block; margin-bottom: 30px; }
+        .title-group h2 { margin: 0; font-size: 22px; font-weight: 900; color: white; letter-spacing: 1px; }
+        .title-group .sub-kurdish { color: var(--primary); font-size: 22px; font-weight: 900; display: block; margin-bottom: 25px; }
 
-        .input-wrapper { position: relative; width: 100%; margin-bottom: 15px; }
-        input { width: 100%; background: #0a0f1a; border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; color: white; text-align: center; outline: none; box-sizing: border-box; font-size: 15px; }
-        .paste-btn { position: absolute; left: 15px; top: 20px; color: var(--primary); cursor: pointer; font-size: 20px; z-index: 5; }
+        /* Input Section */
+        .input-wrapper { position: relative; width: 100%; }
+        input { width: 100%; background: #0a0f1a; border: 1px solid rgba(255,255,255,0.05); padding: 18px; border-radius: 22px; color: white; text-align: center; outline: none; margin-bottom: 15px; box-sizing: border-box; font-size: 14px; }
+        .paste-btn { position: absolute; left: 15px; top: 18px; color: var(--primary); cursor: pointer; font-size: 18px; z-index: 5; }
 
-        .main-btn { width: 100%; padding: 20px; border-radius: 20px; border: none; background: linear-gradient(45deg, #ff0050, #7000ff); color: white; font-weight: 900; font-size: 16px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 0, 80, 0.2); }
-        .main-btn:active { transform: scale(0.98); }
-
-        .ads-msg { font-size: 13px; color: var(--primary); margin: 35px 0 15px; font-weight: bold; opacity: 0.9; }
-        .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .acc-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 18px; color: white; text-decoration: none; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        .acc-card:hover { background: rgba(255,255,255,0.1); }
+        .main-btn { width: 100%; padding: 18px; border-radius: 22px; border: none; background: linear-gradient(45deg, #ff0050, #7000ff); color: white; font-weight: 900; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        
+        .ads-msg { font-size: 12px; color: var(--primary); margin: 30px 0 15px; font-weight: bold; }
+        .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .acc-card { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 18px; color: white; text-decoration: none; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
@@ -78,13 +66,11 @@
         <div class="list-title">سیستەمی ناوەندی</div>
         <div class="list-item" onclick="alert('سێرڤەر ئێستا چالاکە.')"><div class="status-dot"></div> باری سێرڤەر: Online</div>
         <div class="list-item"><i class="fas fa-bolt"></i> خێرایی سێرڤەر: ⚡ 1.2 GB/s</div>
-        <div class="list-item"><i class="fas fa-shield-check"></i> پاراستنی SSL: چالاکە</div>
-        
+        <div class="list-item"><i class="fas fa-shield-check"></i> SSL: چالاکە</div>
         <div class="list-title">خزمەتگوزاری</div>
         <div class="list-item" onclick="location.reload()"><i class="fas fa-house-chimney"></i> لاپەڕەی سەرەکی</div>
-        <div class="list-item" onclick="window.open('https://t.me/kandesh_gardi', '_blank')"><i class="fas fa-comment-dots"></i> پشتگیری تەکنیکی</div>
-        
-        <div style="margin-top:40px; font-size:10px; opacity:0.3; text-align:center;">© 2026 KANDESH - ENGINEER</div>
+        <div class="list-item" onclick="window.open('https://t.me/kandesh_gardi', '_blank')"><i class="fas fa-comment-dots"></i> پشتگیری</div>
+        <div style="margin-top:40px; font-size:10px; opacity:0.3; text-align:center;">© 2026 KANDESH</div>
     </div>
 
     <div class="glass-box">
@@ -99,7 +85,7 @@
             <input type="text" id="linkInput" placeholder="لینکی تیکتۆک لێرە پەیست بکە...">
         </div>
 
-        <button class="main-btn" id="execBtn" onclick="processVideo()">EXECUTE EXTRACTION</button>
+        <button class="main-btn" onclick="processVideo()">EXECUTE EXTRACTION</button>
         <div id="result"></div>
 
         <div class="ads-msg">بۆ دروستکردنی بۆت و وێبسایت نامە بنێرە:</div>
@@ -127,10 +113,7 @@
                 const data = await response.json();
                 if(data.code === 0) {
                     confetti();
-                    document.getElementById('result').innerHTML = `
-                        <div style="margin-top:20px; border-radius:20px; overflow:hidden; border:1px solid var(--primary);">
-                            <video controls style="width:100%; display:block;" src="${data.data.play}"></video>
-                        </div>`;
+                    document.getElementById('result').innerHTML = `<video controls style="width:100%; border-radius:20px; margin-top:15px;" src="${data.data.play}"></video>`;
                 }
             } catch (e) { alert("هەڵە!"); }
         }
