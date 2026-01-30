@@ -9,47 +9,38 @@
     <style>
         :root { --primary: #00f2fe; --tiktok: #ff0050; --insta: #e1306c; --snap: #fffc00; --fb: #1877f2; }
         
+        /* ستایلی باکگراوندی نوێ: شەپۆلی ڕەنگی شل */
         html, body { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             font-family: 'Segoe UI', sans-serif; overflow: hidden; color: white; 
             display: flex; justify-content: center; align-items: center; 
-            background-color: #020617;
+            background: #000; /* ڕەنگی بنەڕەتی ڕەش */
             position: relative;
         }
 
-        /* دروستکردنی شەپۆلە ڕەنگاوڕەنگەکان وەک وێنەکە */
-        body::before, body::after {
+        /* دروستکردنی جوڵەی ڕەنگەکان لە پشتەوە */
+        body::before {
             content: "";
             position: absolute;
-            width: 150vmax;
-            height: 150vmax;
-            border-radius: 40%;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            background: 
+                radial-gradient(at 0% 0%, rgba(0, 242, 254, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(112, 0, 255, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 0, 80, 0.2) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(0, 242, 254, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(7, 15, 30, 1) 0px, transparent 100%);
             z-index: -1;
-            filter: blur(70px);
-            opacity: 0.45;
-            animation: rotateWaves 20s linear infinite;
+            filter: blur(40px);
+            animation: meshMove 10s ease-infinite infinite alternate;
         }
 
-        body::before {
-            background: radial-gradient(circle, #00f2fe 0%, #7000ff 50%, transparent 100%);
-            top: -70%;
-            left: -50%;
+        @keyframes meshMove {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
         }
 
-        body::after {
-            background: radial-gradient(circle, #ff0050 0%, #00f2fe 50%, transparent 100%);
-            bottom: -70%;
-            right: -50%;
-            animation-duration: 25s;
-            animation-direction: reverse;
-        }
-
-        @keyframes rotateWaves {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* بەشەکانی تری وێبسایتەکە بە بێ دەستکاری */
+        /* لێرە بەدواوە هیچ دەستکارییەک نەکراوە - وەک کۆدەکەی خۆت ماوەتەوە */
         .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border: none; overflow-y: auto; scrollbar-width: none; }
         .sidebar.active { left: 0; }
         .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); padding: 8px 12px; border-radius: 12px; }
