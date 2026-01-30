@@ -9,26 +9,29 @@
     <style>
         :root { --primary: #00f2fe; --tiktok: #ff0050; --insta: #e1306c; --snap: #fffc00; --fb: #1877f2; }
         
-        /* گۆڕینی ڕەنگەکان بۆ شێوازی پرۆفیشناڵ و لوکس */
+        /* گۆڕینی باکگراوند بۆ ستایلی ناو وێنەکە */
         html, body { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             font-family: 'Segoe UI', sans-serif; overflow: hidden; color: white; 
             display: flex; justify-content: center; align-items: center; 
-            background: linear-gradient(135deg, #050a18, #0c1222, #070b14, #110c1d);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            background: radial-gradient(circle at 0% 0%, rgba(0, 242, 254, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 100% 100%, rgba(225, 48, 108, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 100% 0%, rgba(112, 0, 255, 0.1) 0%, transparent 40%),
+                        #020617;
+            background-size: 200% 200%;
+            animation: moveGradient 10s ease infinite;
         }
 
-        @keyframes gradientBG {
+        @keyframes moveGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* لێرە بەدواوە بەبێ هیچ دەستکارییەک وەک خۆی ماوەتەوە */
+        /* لێرە بەدواوە بێ دەستکاری ماوەتەوە و هێڵەکان لادران */
         .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border: none; overflow-y: auto; scrollbar-width: none; }
         .sidebar.active { left: 0; }
-        .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); padding: 8px 12px; border-radius: 12px; }
+        .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.2); padding: 8px 12px; border-radius: 12px; }
 
         .list-title { color: var(--primary); font-size: 15px; font-weight: 800; margin: 25px 0 12px; opacity: 0.8; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
         .list-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border-radius: 15px; margin-bottom: 10px; font-size: 13px; cursor: pointer; transition: 0.3s; }
@@ -38,6 +41,7 @@
         .status-dot { width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: pulse-green 1.5s infinite; }
         @keyframes pulse-green { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
+        /* Main Glass Box - No extra borders */
         .glass-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; }
         .tiktok-logo { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--tiktok)); }
         
@@ -53,7 +57,7 @@
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
         #result { width: 100%; margin-top: 20px; }
-        .video-container { position: relative; width: 100%; border-radius: 25px; overflow: hidden; border: 1.5px solid rgba(0, 242, 254, 0.3); }
+        .video-container { position: relative; width: 100%; border-radius: 25px; overflow: hidden; border: 1.5px solid rgba(0, 242, 254, 0.2); }
         video { width: 100%; display: block; max-height: 300px; }
         .dl-icon { position: absolute; top: 15px; right: 15px; background: var(--primary); color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 20px; }
 
