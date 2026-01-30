@@ -9,65 +9,70 @@
     <style>
         :root { --primary: #00f2fe; --tiktok: #ff0050; --insta: #e1306c; --snap: #fffc00; --fb: #1877f2; }
         
-        /* باکگراوند ڕێک وەک وێنەکە و بە جوڵەی هێواش */
         html, body { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             font-family: 'Segoe UI', sans-serif; overflow: hidden; color: white; 
             display: flex; justify-content: center; align-items: center; 
-            background: #020617;
+            background-color: #020617;
             position: relative;
         }
 
-        body::before {
+        /* دروستکردنی شەپۆلە ڕەنگاوڕەنگەکان وەک وێنەکە */
+        body::before, body::after {
             content: "";
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.35) 0%, transparent 45%),
-                radial-gradient(circle at 90% 10%, rgba(225, 48, 108, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 10% 90%, rgba(112, 0, 255, 0.3) 0%, transparent 45%),
-                radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.3) 0%, transparent 45%);
+            width: 150vmax;
+            height: 150vmax;
+            border-radius: 40%;
             z-index: -1;
-            animation: backgroundFlow 12s ease-in-out infinite alternate;
+            filter: blur(70px);
+            opacity: 0.45;
+            animation: rotateWaves 20s linear infinite;
         }
 
-        @keyframes backgroundFlow {
-            0% { opacity: 0.7; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.1); }
+        body::before {
+            background: radial-gradient(circle, #00f2fe 0%, #7000ff 50%, transparent 100%);
+            top: -70%;
+            left: -50%;
         }
 
-        /* بەشەکانی تر بێ دەستکاری */
+        body::after {
+            background: radial-gradient(circle, #ff0050 0%, #00f2fe 50%, transparent 100%);
+            bottom: -70%;
+            right: -50%;
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotateWaves {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* بەشەکانی تری وێبسایتەکە بە بێ دەستکاری */
         .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border: none; overflow-y: auto; scrollbar-width: none; }
         .sidebar.active { left: 0; }
         .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); padding: 8px 12px; border-radius: 12px; }
-
         .list-title { color: var(--primary); font-size: 15px; font-weight: 800; margin: 25px 0 12px; opacity: 0.8; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
         .list-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border-radius: 15px; margin-bottom: 10px; font-size: 13px; cursor: pointer; transition: 0.3s; }
         .list-item:hover { background: rgba(0, 242, 254, 0.15); transform: translateX(-5px); }
         .list-item i { width: 20px; text-align: center; color: var(--primary); }
-
         .status-dot { width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: pulse-green 1.5s infinite; }
         @keyframes pulse-green { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
-
-        .glass-box { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; backdrop-filter: blur(20px); }
+        .glass-box { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; backdrop-filter: blur(15px); }
         .tiktok-logo { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--tiktok)); }
-        
         .title-group h2 { margin: 0; font-size: 22px; font-weight: 900; color: white; letter-spacing: 1px; }
         .title-group .sub-kurdish { color: var(--primary); font-size: 22px; font-weight: 900; display: block; margin-bottom: 25px; }
-
         .input-wrapper { position: relative; width: 100%; }
         input { width: 100%; background: #0a0f1a; border: 1px solid rgba(255,255,255,0.05); padding: 18px; border-radius: 22px; color: white; text-align: center; outline: none; margin-bottom: 15px; box-sizing: border-box; font-size: 14px; }
         .paste-btn { position: absolute; left: 15px; top: 18px; color: var(--primary); cursor: pointer; font-size: 18px; }
-
         .main-btn { width: 100%; padding: 18px; border-radius: 22px; border: none; background: linear-gradient(45deg, #ff0050, #7000ff); color: white; font-weight: 900; font-size: 16px; cursor: pointer; transition: 0.3s; }
         .meter-container { display: none; margin: 15px auto; width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-
         #result { width: 100%; margin-top: 20px; }
         .video-container { position: relative; width: 100%; border-radius: 25px; overflow: hidden; border: 1.5px solid rgba(0, 242, 254, 0.3); }
         video { width: 100%; display: block; max-height: 300px; }
         .dl-icon { position: absolute; top: 15px; right: 15px; background: var(--primary); color: #000; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-size: 20px; }
-
         .ads-msg { font-size: 12px; color: var(--primary); margin: 30px 0 15px; font-weight: bold; }
         .account-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .acc-card { background: rgba(255,255,255,0.04); padding: 12px; border-radius: 18px; color: white; text-decoration: none; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,0.05); }
@@ -87,7 +92,6 @@
         <div class="list-item" onclick="alert('سپاس بۆ نرخاندنەکەت! ⭐')"><i class="fas fa-star-half-stroke"></i> نرخاندنی سایت</div>
         <div style="margin-top:40px; font-size:10px; opacity:0.3; text-align:center;">© 2026 KANDESH - ENGINEER</div>
     </div>
-
     <div class="glass-box">
         <div class="tiktok-logo"><i class="fab fa-tiktok"></i></div>
         <div class="title-group">
@@ -112,12 +116,7 @@
 
     <script>
         function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
-        async function pasteLink() { 
-            try {
-                const text = await navigator.clipboard.readText(); 
-                document.getElementById('linkInput').value = text; 
-            } catch(e) { alert("تکایە دەستووری پەیست بدە."); }
-        }
+        async function pasteLink() { try { const text = await navigator.clipboard.readText(); document.getElementById('linkInput').value = text; } catch(e) { alert("تکایە دەستووری پەیست بدە."); } }
         async function processVideo() {
             const url = document.getElementById('linkInput').value;
             if(!url) return;
@@ -131,11 +130,7 @@
                     confetti();
                     document.getElementById('loader').style.display = "none";
                     document.getElementById('execBtn').style.display = "block";
-                    document.getElementById('result').innerHTML = `
-                        <div class="video-container">
-                            <div class="dl-icon" onclick="saveVid('${data.data.play}')"><i class="fas fa-download"></i></div>
-                            <video controls playsinline src="${data.data.play}"></video>
-                        </div>`;
+                    document.getElementById('result').innerHTML = `<div class="video-container"><div class="dl-icon" onclick="saveVid('${data.data.play}')"><i class="fas fa-download"></i></div><video controls playsinline src="${data.data.play}"></video></div>`;
                 } else { throw new Error(); }
             } catch (e) {
                 document.getElementById('loader').style.display = "none";
