@@ -9,34 +9,34 @@
     <style>
         :root { --primary: #00f2fe; --tiktok: #ff0050; --insta: #e1306c; --snap: #fffc00; --fb: #1877f2; }
         
-        /* دروستکردنی باکگراوندێکی زیندوو و جوڵاو */
+        /* باکگراوند ڕێک وەک وێنەکە و بە جوڵەی هێواش */
         html, body { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             font-family: 'Segoe UI', sans-serif; overflow: hidden; color: white; 
             display: flex; justify-content: center; align-items: center; 
-            background-color: #020617;
+            background: #020617;
             position: relative;
         }
 
-        /* دروستکردنی شەپۆلە جوڵاوەکان لە پشتەوە */
         body::before {
             content: "";
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 0% 0%, rgba(0, 242, 254, 0.4) 0%, transparent 40%),
-                        radial-gradient(circle at 100% 100%, rgba(225, 48, 108, 0.3) 0%, transparent 40%),
-                        radial-gradient(circle at 100% 0%, rgba(112, 0, 255, 0.3) 0%, transparent 40%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 90% 10%, rgba(225, 48, 108, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 10% 90%, rgba(112, 0, 255, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.3) 0%, transparent 45%);
             z-index: -1;
-            animation: moveColors 15s ease-in-out infinite alternate;
+            animation: backgroundFlow 12s ease-in-out infinite alternate;
         }
 
-        @keyframes moveColors {
-            0% { transform: translate(-10%, -10%) rotate(0deg); }
-            100% { transform: translate(5%, 5%) rotate(10deg); opacity: 0.8; }
+        @keyframes backgroundFlow {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
         }
 
-        /* لێرە بەدواوە هیچ دەستکارییەک نەکراوە - وەک کۆدەکەی جەنابت ماوەتەوە */
+        /* بەشەکانی تر بێ دەستکاری */
         .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: rgba(7, 15, 30, 0.98); backdrop-filter: blur(25px); z-index: 2000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); padding: 50px 20px; border: none; overflow-y: auto; scrollbar-width: none; }
         .sidebar.active { left: 0; }
         .menu-btn { position: fixed; top: 25px; left: 25px; font-size: 22px; color: var(--primary); cursor: pointer; z-index: 2100; background: rgba(0, 242, 254, 0.1); border: 1px solid rgba(0, 242, 254, 0.3); padding: 8px 12px; border-radius: 12px; }
@@ -49,7 +49,7 @@
         .status-dot { width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: pulse-green 1.5s infinite; }
         @keyframes pulse-green { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
 
-        .glass-box { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; backdrop-filter: blur(15px); }
+        .glass-box { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 40px; width: 90%; max-width: 420px; padding: 30px 20px; text-align: center; position: relative; max-height: 95vh; overflow-y: auto; scrollbar-width: none; backdrop-filter: blur(20px); }
         .tiktok-logo { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--tiktok)); }
         
         .title-group h2 { margin: 0; font-size: 22px; font-weight: 900; color: white; letter-spacing: 1px; }
@@ -74,21 +74,17 @@
     </style>
 </head>
 <body>
-
     <div class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars-staggered"></i></div>
-
     <div class="sidebar" id="sidebar">
         <div class="list-title">سیستەمی ناوەندی</div>
         <div class="list-item" onclick="alert('سێرڤەر ئێستا چالاکە.')"><div class="status-dot"></div> باری سێرڤەر: Online</div>
         <div class="list-item"><i class="fas fa-bolt"></i> خێرایی سێرڤەر: ⚡ 1.2 GB/s</div>
         <div class="list-item"><i class="fas fa-shield-check"></i> پاراستنی SSL: چالاکە</div>
-        
         <div class="list-title">خزمەتگوزاری</div>
         <div class="list-item" onclick="location.reload()"><i class="fas fa-house-chimney"></i> لاپەڕەی سەرەکی</div>
         <div class="list-item" onclick="alert('نوێکاری v3.8 تەواو بووە.')"><i class="fas fa-code-merge"></i> دواین نوێکارییەکان</div>
         <div class="list-item" onclick="window.open('https://t.me/kandesh_gardi', '_blank')"><i class="fas fa-comment-dots"></i> پشتگیری تەکنیکی</div>
         <div class="list-item" onclick="alert('سپاس بۆ نرخاندنەکەت! ⭐')"><i class="fas fa-star-half-stroke"></i> نرخاندنی سایت</div>
-        
         <div style="margin-top:40px; font-size:10px; opacity:0.3; text-align:center;">© 2026 KANDESH - ENGINEER</div>
     </div>
 
@@ -98,17 +94,13 @@
             <h2>ENGINEER KANDESH</h2>
             <span class="sub-kurdish">ئەندازیار کاندێش</span>
         </div>
-
         <div class="input-wrapper">
             <i class="fas fa-paste paste-btn" onclick="pasteLink()"></i>
             <input type="text" id="linkInput" placeholder="لینکی تیکتۆک لێرە پەیست بکە...">
         </div>
-
         <button class="main-btn" id="execBtn" onclick="processVideo()">EXECUTE EXTRACTION</button>
         <div class="meter-container" id="loader"></div>
-
         <div id="result"></div>
-
         <div class="ads-msg">بۆ دروستکردنی بۆت و وێبسایت نامە بنێرە:</div>
         <div class="account-grid">
             <a href="https://instagram.com/kandeesshh.3" class="acc-card"><i class="fab fa-instagram" style="color:var(--insta)"></i> Instagram</a>
@@ -126,14 +118,12 @@
                 document.getElementById('linkInput').value = text; 
             } catch(e) { alert("تکایە دەستووری پەیست بدە."); }
         }
-
         async function processVideo() {
             const url = document.getElementById('linkInput').value;
             if(!url) return;
             document.getElementById('execBtn').style.display = "none";
             document.getElementById('loader').style.display = "block";
             document.getElementById('result').innerHTML = "";
-
             try {
                 const response = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(url)}`);
                 const data = await response.json();
@@ -153,7 +143,6 @@
                 alert("لینکی هەڵە!");
             }
         }
-
         async function saveVid(url) {
             const response = await fetch(url);
             const blob = await response.blob();
